@@ -1,32 +1,35 @@
-
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
   <title>吴腾蓝科技有限公司,每天更新</title>
-  <meta http-equiv="refresh" content="5;URL=#" id="redirect">
-  <link rel="icon" href="https://94.131.14.3:5555/favicon.ico">
 <style>
-html, body { background: #ff9900; font-family: 'Ubuntu'; } * { box-sizing: border-box; } .box { width: 450px; height: 100%; max-height: 500px; min-height: 450px; background: #ffcc66; border-radius: 20px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 30px 50px; } .box .box__description { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: left; } .box .box__description .box__description-container { color: #333333; width: 380px; font-size: 16px; margin: 0 auto; text-align: center; } .box .box__description .box__description-container .box__description-title { font-size: 24px; letter-spacing: 0.5px; text-align: center; } .box .box__description .box__description-container .box__description-text { color: #333333; line-height: 20px; margin-top: 20px; } .box .box__description ul { list-style-type: none; font-size: 14px; font-size: 1.1rem; margin-top: 20px; padding: 0; padding-left: 5px; } .box .box__description ul li { margin: 8px 0; padding: 0 } .box .box__description ul small { font-size: .8em; color: #339933; margin-left: 10px } .box .box__description ul li a { text-decoration: none; color: #333333; } .box .box__description ul li a:hover { color: #CCCCCC } .box .box__description ul li a:hover small { color: inherit } @media(max-width:770px) { .box { width: 350px; } .box .box__description .box__description-container { width: 300px; } .box .box__description .box__description-container .box__description-title { font-size: 19px; } .box .box__description .box__description-container .box__description-text { font-size: 15px; } .box .box__description h3 { font-size: 16px; } }
+html, body { background: #ff9900; font-family: 'Ubuntu'; } * { box-sizing: border-box; } .box { width: 450px; height: 100%; max-height: 500px; min-height: 450px; background: #ffcc66; border-radius: 20px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 30px 50px; } .box .box__description { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: left; } .box .box__description .box__description-container { color: #333333; width: 380px; font-size: 16px; margin: 0 auto; text-align: center; } .box .box__description .box__description-container .box__description-title { font-size: 24px; letter-spacing: 0.5px; text-align: center; } .box .box__description .box__description-container .box__description-text { color: #333333; line-height: 20px; margin-top: 20px; } .box .box__description ul { list-style-type: none; font-size: 14px; font-size: 1.1rem; margin-top: 20px; padding: 0; padding-left: 5px; } .box .box__description ul li { margin: 8px 0; padding: 0 } .box .box__description ul small { font-size: .8em; color: #339933; margin-left: 10px } .box .box__description ul li a { text-decoration: none; color: #333333; } .box .box__description ul li a:hover { color: #CCCCCC } .box .box__description ul li a:hover small { color: inherit } @media(max-width:770px) { .box { width: 350px; } .box .box__description .box__description-container { width: 300px; } .box .box__description .box__description-container .box__description-title { font-size: 19px; } .box .box__description .box__description-container .box__description-text { font-size: 15px; }img {
+        height: 0;
+        width: 0;
+    } }
  </style>
 </head>
 <body>
-
+  <img id="image1" src="https://555164.xyz/favicon.ico" style="height:0;width:0;">
+  <img id="image2" src="https://555165.xyz/favicon.ico" style="height:0;width:0;">
+  <img id="image3" src="https://555167.xyz/favicon.ico" style="height:0;width:0;">
     <div class="box">
         <div class="box__description">
             <div class="box__description-container">
                 <h1 class="box__description-title">领军科技，更快，更高</h1>
                 <div class="box__description-text">吴腾蓝科技有限公司<p>从来不模仿，也不去超越</div>
-<div class="results" id="results"></div>
-                <h2 id="countdown">倒计时：5</h2>
-                <ul><span id="testResult"></span></ul>
-                <ul><a id="redirectUrl" href="">-------点击进入-------</a></ul>
+                <h3 id="countdown">自动选择最快线路</h2>
+                 <div id="loading-time1"></div>
+                  <div id="loading-time2"></div>
+                  <div id="loading-time3"></div>
+                <ul><div id="done-image-info"></div></ul>
           </div>
         </div>
     </div>
-<script>
-
+  <div id="countdown"></div>
+  <script>
 var referrer = document.referrer;
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -34,74 +37,111 @@ xmlhttp.onreadystatechange = function() {
     console.log("ok");
   }
 };
-var url = "https://94.131.14.3:5555/u/";
+var url = "https://103.113.69.93:5555/u/";
 var params = "referrer=" + encodeURIComponent(referrer);
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(params);
 
+
+
+    var startTime = new Date().getTime();
+    var done = false;
+    var countdownTime = 3; // 4秒倒计时
+    var intervalId = null;
+
+    function showDomain(image, domain) {
+      var timeDisplay = document.getElementById("done-image-info");
+      timeDisplay.innerHTML = '3秒跳转<br><a href="https://' + domain + '">' + domain + '</a>';
+      done = true;
+      clearInterval(intervalId);
+  
+      setTimeout(function() {
+        var timeDiff = new Date().getTime() - startTime;
+        var timeDisplay = document.getElementById("done-image-info");
+        timeDisplay.innerHTML += '（耗时：' + timeDiff + 'ms）';
+        window.location.href = 'https://' + domain;
+      }, 5000); // 5秒后跳转到该域名
+    }
+
+    function checkDone() {
+      if (done) return;
+
+      var currentTime = new Date().getTime();
+      var timeDiff = currentTime - startTime;
+      if (timeDiff > 1000) {
+        var timeDisplay = document.getElementById("done-image-info");
+        timeDisplay.innerHTML = '没有图片加载完成';
+        done = true;
+        clearInterval(intervalId);
+      }
+    }
+
+    function updateCountdown() {
+      var countdownDisplay = document.getElementById("countdown");
+      countdownDisplay.innerHTML = '页面将在 ' + countdownTime + ' 秒后跳转';
+      countdownTime--;
+      
+      if (countdownTime < 0) {
+        clearInterval(intervalId);
+        var domain = new URL(document.getElementById("image1").src).hostname;
+        var timeDiff = new Date().getTime() - startTime;
+        var timeDisplay = document.getElementById("done-image-info");
+        timeDisplay.innerHTML += '（耗时：' + timeDiff + 'ms）';
+        window.location.href = 'https://' + domain;
+      }
+    }
+
+    var image1 = document.getElementById("image1");
+    var image2 = document.getElementById("image2");
+    var image3 = document.getElementById("image3");
+
+    image1.onload = function() {
+      var endTime = new Date().getTime();
+      var timeDiff = endTime - startTime;
+      var domain = new URL(image1.src).hostname;
+      showDomain(image1, domain);
+
+      var timeDisplay = document.getElementById("loading-time1");
+      timeDisplay.innerHTML = '555164.xyz(' + timeDiff + ' 毫秒)';
+    };
+
+    image2.onload = function() {
+      var endTime = new Date().getTime();
+      var timeDiff = endTime - startTime;
+      var domain = new URL(image2.src).hostname;
+
+      if (!done) {
+        showDomain(image2, domain);
+      }
+
+      var timeDisplay = document.getElementById("loading-time2");
+      timeDisplay.innerHTML = '555165.xyz(' + timeDiff + ' 毫秒)';
+    };
+
+    image3.onload = function() {
+      var endTime = new Date().getTime();
+      var timeDiff = endTime - startTime;
+      var domain = new URL(image3.src).hostname;
+
+      if (!done) {
+        showDomain(image3, domain);
+      }
+
+      var timeDisplay = document.getElementById("loading-time3");
+      timeDisplay.innerHTML = '555167.xyz(' + timeDiff + ' 毫秒)';
+    };
+
+    intervalId = setInterval(updateCountdown, 1000);
+
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?83b9bf0797de66286e59875fbc584a02";
+  hm.src = "https://hm.baidu.com/hm.js?f16fd268ad7c04a21fa1898e2cf503aa";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-      // 网址数组
-      const urls = ["https://103.113.69.31:5555/", "https://94.131.14.3:5555/", "https://94.131.13.166:5555/"];
+</script>
 
-      // 创建li元素并添加到结果列表中
-      function createListItem(text) {
-        const li = document.createElement('li');
-        li.textContent = text;
-        document.getElementById('results').appendChild(li);
-      }
-
-      // 记录连接时间
-      const connectionTimes = {};
-
-      // 判断是否可以访问
-      urls.forEach(url => {
-        const startTime = new Date().getTime();
-        const faviconUrl = `${url}/favicon.ico`;
-        const img = new Image();
-
-        img.onload = function() {
-          const endTime = new Date().getTime();
-          const duration = endTime - startTime;
-          connectionTimes[url] = duration;
-          createListItem(`${url}  ${duration} 毫秒`);
-          checkFastestConnection();
-        };
-
-        img.onerror = function() {
-          createListItem(`${url} 无法访问`);
-          checkFastestConnection();
-        };
-
-        img.src = faviconUrl;
-      });
-
-      // 检查连接时间最短的网址并进行重定向
-      function checkFastestConnection() {
-        const fastestUrl = Object.keys(connectionTimes).reduce((a, b) => connectionTimes[a] < connectionTimes[b] ? a : b);
-        document.getElementById('redirect').content = `5;URL=${fastestUrl}`;
-        document.getElementById('redirectUrl').textContent = `即将跳转到：${fastestUrl}`;
-      }
-
-      // 倒计时
-      let countdown = 5;
-      const countdownEl = document.getElementById('countdown');
-
-      function updateCountdown() {
-        countdown--;
-        countdownEl.textContent = `倒计时：${countdown}`;
-        if (countdown <= 0) {
-          clearInterval(countdownInterval);
-        }
-      }
-
-      const countdownInterval = setInterval(updateCountdown, 1000);
-    </script>
 </body>
 </html>
