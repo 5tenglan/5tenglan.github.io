@@ -12,18 +12,18 @@ html, body { background: #ff9900; font-family: 'Ubuntu'; } * { box-sizing: borde
  </style>
 </head>
 <body>
-  <img id="image1" src="https://555160.xyz/favicon.ico" style="height:0;width:0;">
-  <img id="image2" src="https://555165.xyz/favicon.ico" style="height:0;width:0;">
-  <img id="image3" src="https://555167.xyz/favicon.ico" style="height:0;width:0;">
+  <img id="image1" src="https://94.131.13.166:5555/favicon.ico" style="height:0;width:0;">
+  <img id="image2" src="https://103.113.69.31:5555/favicon.ico" style="height:0;width:0;">
+  <img id="image3" src="https://94.131.14.3:5555/favicon.ico" style="height:0;width:0;">
     <div class="box">
         <div class="box__description">
             <div class="box__description-container">
                 <h1 class="box__description-title">领军科技，更快，更高</h1>
                 <div class="box__description-text">吴腾蓝科技有限公司<p>从来不模仿，也不去超越</div>
                 <h3 id="countdown">选择最快线路</h2>
-                 <div><a href="https://555160.xyz">555<font color=red>160</font>.xyz</a><span id="loading-time1"></span></div>
-                 <div><a href="https://555165.xyz">555<font color=red>165</font>.xyz</a><span id="loading-time2"></span></div>
-                 <div><a href="https://555167.xyz">555<font color=red>167</font>.xyz</a><span id="loading-time3"></span></div>
+                 <div><a href="https://94.131.13.166:5555">第一备用站点</a><span id="loading-time1"></span></div>
+                 <div><a href="https://103.113.69.31:5555">第二备用  站点</a><span id="loading-time2"></span></div>
+                 <div><a href="https://94.131.14.3:5555">第三备用站点</a><span id="loading-time3"></span></div>
                 <ul><div id="done-image-info"></div></ul>
           </div>
         </div>
@@ -52,7 +52,7 @@ xmlhttp.send(params);
 
     function showDomain(image, domain) {
       var timeDisplay = document.getElementById("done-image-info");
-      timeDisplay.innerHTML = '3秒跳转<br><a href="https://' + domain + '">' + domain + '</a>';
+      timeDisplay.innerHTML = '3秒跳转<br><a href="https://' + domain + '">' + domain + ':5555</a>';
       done = true;
       clearInterval(intervalId);
   
@@ -60,7 +60,7 @@ xmlhttp.send(params);
         var timeDiff = new Date().getTime() - startTime;
         var timeDisplay = document.getElementById("done-image-info");
         timeDisplay.innerHTML += '（耗时：' + timeDiff + 'ms）';
-        window.location.href = 'https://' + domain;
+        window.location.href = 'https://' + domain +':5555';
       }, 5000); // 5秒后跳转到该域名
     }
 
@@ -88,7 +88,7 @@ xmlhttp.send(params);
         var timeDiff = new Date().getTime() - startTime;
         var timeDisplay = document.getElementById("done-image-info");
         timeDisplay.innerHTML += '（耗时：' + timeDiff + 'ms）';
-        window.location.href = 'https://' + domain;
+        window.location.href =  'https://' + domain +':5555';
       }
     }
 
