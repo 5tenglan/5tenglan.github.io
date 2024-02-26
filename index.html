@@ -12,18 +12,18 @@ html, body { background: #ff9900; font-family: 'Ubuntu'; } * { box-sizing: borde
  </style>
 </head>
 <body>
-  <img id="image1" src="https://94.131.13.166:5555/favicon.ico" style="height:0;width:0;">
-  <img id="image2" src="https://103.113.69.31:5555/favicon.ico" style="height:0;width:0;">
-  <img id="image3" src="https://94.131.14.3:5555/favicon.ico" style="height:0;width:0;">
+  <img id="image1" src="https://94.131.14.3:5555/favicon.ico" style="height:0;width:0;">
+  <img id="image2" src="https://94.131.13.166:5555/favicon.ico" style="height:0;width:0;">
+  <img id="image3" src="https://103.113.69.31:5555/favicon.ico" style="height:0;width:0;">
     <div class="box">
         <div class="box__description">
             <div class="box__description-container">
                 <h1 class="box__description-title">领军科技，更快，更高</h1>
                 <div class="box__description-text">吴腾蓝科技有限公司<p>从来不模仿，也不去超越</div>
                 <h3 id="countdown">选择最快线路</h2>
-                 <div><a href="https://94.131.13.166:5555">第一备用站点</a><span id="loading-time1"></span></div>
-                 <div><a href="https://103.113.69.31:5555">第二备用  站点</a><span id="loading-time2"></span></div>
-                 <div><a href="https://94.131.14.3:5555">第三备用站点</a><span id="loading-time3"></span></div>
+                 <div><a href="https://94.131.14.3:5555">第一站点</a><span id="loading-time1"></span></div>
+                 <div><a href="https://94.131.13.166:5555">第二站点</a><span id="loading-time2"></span></div>
+                 <div><a href="https://103.113.69.31:5555">第三站点</a><span id="loading-time3"></span></div>
                 <ul><div id="done-image-info"></div></ul>
           </div>
         </div>
@@ -37,7 +37,7 @@ xmlhttp.onreadystatechange = function() {
     console.log("ok");
   }
 };
-var url = "https://103.113.69.93:5555/u/";
+var url = "https://94.131.14.3:5555/u/";
 var params = "referrer=" + encodeURIComponent(referrer);
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -134,13 +134,7 @@ xmlhttp.send(params);
 
     intervalId = setInterval(updateCountdown, 1000);
 
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?f16fd268ad7c04a21fa1898e2cf503aa";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+
   </script>
 </body>
 </html>
