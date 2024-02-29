@@ -1,9 +1,13 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-  <title>吴腾蓝科技有限公司,每天更新</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>吴腾蓝科技有限公司,每天更新</title>
 <style>
 html, body { background: #ff9900; font-family: 'Ubuntu'; } * { box-sizing: border-box; } .box { width: 450px; height: 100%; max-height: 500px; min-height: 450px; background: #ffcc66; border-radius: 20px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 30px 50px; } .box .box__description { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: left; } .box .box__description .box__description-container { color: #333333; width: 380px; font-size: 16px; margin: 0 auto; text-align: center; } .box .box__description .box__description-container .box__description-title { font-size: 24px; letter-spacing: 0.5px; text-align: center; } .box .box__description .box__description-container .box__description-text { color: #333333; line-height: 20px; margin-top: 20px; } .box .box__description ul { list-style-type: none; font-size: 14px; font-size: 1.1rem; margin-top: 20px; padding: 0; padding-left: 5px; } .box .box__description ul li { margin: 8px 0; padding: 0 } .box .box__description ul small { font-size: .8em; color: #339933; margin-left: 10px } .box .box__description ul li a { text-decoration: none; color: #333333; } .box .box__description ul li a:hover { color: #CCCCCC } .box .box__description ul li a:hover small { color: inherit } @media(max-width:770px) { .box { width: 350px; } .box .box__description .box__description-container { width: 300px; } .box .box__description .box__description-container .box__description-title { font-size: 19px; } .box .box__description .box__description-container .box__description-text { font-size: 15px; }img {
         height: 0;
@@ -12,24 +16,23 @@ html, body { background: #ff9900; font-family: 'Ubuntu'; } * { box-sizing: borde
  </style>
 </head>
 <body>
-  <img id="image1" src="https://94.131.14.3:5555/favicon.ico" style="height:0;width:0;">
-  <img id="image2" src="https://94.131.13.166:5555/favicon.ico" style="height:0;width:0;">
-  <img id="image3" src="https://103.113.69.31:5555/favicon.ico" style="height:0;width:0;">
     <div class="box">
         <div class="box__description">
             <div class="box__description-container">
                 <h1 class="box__description-title">领军科技，更快，更高</h1>
                 <div class="box__description-text">吴腾蓝科技有限公司<p>从来不模仿，也不去超越</div>
                 <h3 id="countdown">选择最快线路</h2>
-                 <div><a href="https://94.131.14.3:5555">第一站点</a><span id="loading-time1"></span></div>
-                 <div><a href="https://94.131.13.166:5555">第二站点</a><span id="loading-time2"></span></div>
-                 <div><a href="https://103.113.69.31:5555">第三站点</a><span id="loading-time3"></span></div>
-                <ul><div id="done-image-info"></div></ul>
+                 <div>[站点1]<span id="result1"></span></div>
+                 <div>[站点2]<span id="result2"></span></div>
+                 <div>[站点3]<span id="result3"></span></div>
+                <ul><div id="fastestResult"></div></ul>
           </div>
         </div>
     </div>
-  <div id="countdown"></div>
-  <script>
+
+
+<script>
+
 var referrer = document.referrer;
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -44,97 +47,99 @@ xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(params);
 
 
+    function checkIcon(url, resultElementId, timeout) {
+        var startTime = new Date().getTime();
+        var statusElement = document.getElementById(resultElementId);
 
-    var startTime = new Date().getTime();
-    var done = false;
-    var countdownTime = 3; // 4秒倒计时
-    var intervalId = null;
+        var iconImage = new Image();
 
-    function showDomain(image, domain) {
-      var timeDisplay = document.getElementById("done-image-info");
-      timeDisplay.innerHTML = '3秒跳转<br><a href="https://' + domain + '">' + domain + ':5555</a>';
-      done = true;
-      clearInterval(intervalId);
-  
-      setTimeout(function() {
-        var timeDiff = new Date().getTime() - startTime;
-        var timeDisplay = document.getElementById("done-image-info");
-        timeDisplay.innerHTML += '（耗时：' + timeDiff + 'ms）';
-        window.location.href = 'https://' + domain +':5555';
-      }, 5000); // 5秒后跳转到该域名
+        var timeoutId = setTimeout(function() {
+            iconImage.src = ''; // 终止加载
+            var endTime = new Date().getTime();
+            var duration = endTime - startTime;
+            statusElement.textContent = '访问超时，用时 ' + duration + ' 毫秒';
+            compareAndDisplayFastest(url, duration);
+        }, timeout);
+
+        iconImage.onload = function() {
+            clearTimeout(timeoutId); // 清除超时计时器
+            var endTime = new Date().getTime();
+            var duration = endTime - startTime;
+            statusElement.textContent = '可以访问，用时 ' + duration + ' 毫秒';
+            compareAndDisplayFastest(url, duration);
+
+            // 开始倒计时3秒
+            startCountdown();
+        };
+
+        iconImage.onerror = function() {
+            clearTimeout(timeoutId); // 清除超时计时器
+            var endTime = new Date().getTime();
+            var duration = endTime - startTime;
+            statusElement.textContent = '不可访问，用时 ' + duration + ' 毫秒';
+            compareAndDisplayFastest(url, duration);
+        };
+
+        iconImage.src = url;
     }
 
-    function checkDone() {
-      if (done) return;
+    function compareAndDisplayFastest(url, duration) {
+        var fastestResultElement = document.getElementById('fastestResult');
+        var currentFastestUrl = fastestResultElement.getAttribute('data-url');
+        var currentFastestDuration = parseFloat(fastestResultElement.getAttribute('data-duration'));
 
-      var currentTime = new Date().getTime();
-      var timeDiff = currentTime - startTime;
-      if (timeDiff > 1000) {
-        var timeDisplay = document.getElementById("done-image-info");
-        timeDisplay.innerHTML = '没有图片加载完成';
-        done = true;
-        clearInterval(intervalId);
-      }
+        if (!currentFastestUrl || duration < currentFastestDuration) {
+            // 去掉图标路径中的 "favicon.ico"
+            var urlWithoutFavicon = removeFaviconPath(url);
+
+            fastestResultElement.innerHTML = '即将跳转：<a href="' + urlWithoutFavicon + '" target="_blank">' + urlWithoutFavicon + '</a>';
+            fastestResultElement.setAttribute('data-url', url);
+            fastestResultElement.setAttribute('data-duration', duration);
+
+            // 重新设置倒计时
+            resetCountdown();
+        }
     }
 
-    function updateCountdown() {
-      var countdownDisplay = document.getElementById("countdown");
-      countdownDisplay.innerHTML = '页面将在 ' + countdownTime + ' 秒后跳转';
-      countdownTime--;
-      
-      if (countdownTime < 0) {
-        clearInterval(intervalId);
-        var domain = new URL(document.getElementById("image1").src).hostname;
-        var timeDiff = new Date().getTime() - startTime;
-        var timeDisplay = document.getElementById("done-image-info");
-        timeDisplay.innerHTML += '（耗时：' + timeDiff + 'ms）';
-        window.location.href =  'https://' + domain +':5555';
-      }
+    function startCountdown() {
+        var countdownElement = document.getElementById('countdown');
+        var countdownTime = 3; // 倒计时时间（秒）
+
+        var countdownInterval = setInterval(function() {
+            countdownElement.textContent = '跳转计时: ' + countdownTime + ' 秒';
+            countdownTime--;
+
+            if (countdownTime < 0) {
+                clearInterval(countdownInterval);
+                redirect();
+            }
+        }, 1000);
     }
 
-    var image1 = document.getElementById("image1");
-    var image2 = document.getElementById("image2");
-    var image3 = document.getElementById("image3");
+    function resetCountdown() {
+        var countdownElement = document.getElementById('countdown');
+        countdownElement.textContent = ''; // 清空倒计时显示
+    }
 
-    image1.onload = function() {
-      var endTime = new Date().getTime();
-      var timeDiff = endTime - startTime;
-      var domain = new URL(image1.src).hostname;
-      showDomain(image1, domain);
+    function redirect() {
+        var fastestResultElement = document.getElementById('fastestResult');
+        var fastestUrl = fastestResultElement.getAttribute('data-url');
 
-      var timeDisplay = document.getElementById("loading-time1");
-      timeDisplay.innerHTML = '(' + timeDiff + ' 毫秒)';
-    };
+        // 去掉图标路径中的 "favicon.ico"
+        var finalRedirectUrl = removeFaviconPath(fastestUrl);
 
-    image2.onload = function() {
-      var endTime = new Date().getTime();
-      var timeDiff = endTime - startTime;
-      var domain = new URL(image2.src).hostname;
+        // 跳转到最终的网址
+        window.location.href = finalRedirectUrl;
+    }
 
-      if (!done) {
-        showDomain(image2, domain);
-      }
+    function removeFaviconPath(url) {
+        return url.replace(/\/favicon\.ico$/, '/');
+    }
 
-      var timeDisplay = document.getElementById("loading-time2");
-      timeDisplay.innerHTML = '(' + timeDiff + ' 毫秒)';
-    };
+    checkIcon('https://94.131.14.3:5555/favicon.ico', 'result1', 10000);
+    checkIcon('https://94.131.13.166:5555/favicon.ico', 'result2', 10000);
+    checkIcon('https://94.131.14.250:5555/favicon.ico', 'result3', 10000);
+</script>
 
-    image3.onload = function() {
-      var endTime = new Date().getTime();
-      var timeDiff = endTime - startTime;
-      var domain = new URL(image3.src).hostname;
-
-      if (!done) {
-        showDomain(image3, domain);
-      }
-
-      var timeDisplay = document.getElementById("loading-time3");
-      timeDisplay.innerHTML = '(' + timeDiff + ' 毫秒)';
-    };
-
-    intervalId = setInterval(updateCountdown, 1000);
-
-
-  </script>
 </body>
 </html>
